@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -17,7 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.fiberhome.fiberchat.dao.TvSeriesDao;
 import com.fiberhome.fiberchat.services.TvSeriseService;
 
-import junit.framework.Assert;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TvSeriesServiceTest {
@@ -54,21 +54,26 @@ public class TvSeriesServiceTest {
 		Assert.assertTrue("冰与火之歌".equals(result.get(0).getName()));		
 	}
 	
-//	@Test
-//	public void testOne() {
-//		String newName = "have a try";
-//		BitSet bitSet = new BitSet();
-//		Mockito.doAnswer(new Answer<Object>() {
-//			@Override
-//			public Object answer(InvocationOnMock invocation) throws Throwable {
-//				// TODO Auto-generated method stub
-//				Object[] arguments = invocation.getArguments();
-//				TvSeriseDto tvSeriseDto = (TvSeriseDto) arguments[0];
-//				Assert.assertEquals(newName, tvSeriseDto.getName());
-//				bitSet.set(0);
-//				return 1;
-//			}
-//		}).when(tvSeriesDao).updateOne(any(TvSeriseDto.class));
-//	}
+	@Test
+	public void testOne() {
+		String newName = "have a try";
+		BitSet bitSet = new BitSet();
+		Mockito.doAnswer(new Answer<Object>() {
+			@Override
+			public Object answer(InvocationOnMock invocation) throws Throwable {
+				// TODO Auto-generated method stub
+				Object[] arguments = invocation.getArguments();
+				TvSeriseDto tvSeriseDto = (TvSeriseDto) arguments[0];
+				Assert.assertEquals(newName, tvSeriseDto.getName());
+				bitSet.set(0);
+				return 1;
+			}
+		}).when(tvSeriesDao).updateOne(Mockito.any(TvSeriseDto.class));
+		TvSeriseDto ts = new TvSeriseDto();
+        ts.setName(newName);
+        ts.setId(111);        
+        tvSeriesService.update(ts);
+        Assert.assertTrue(bitSet.get(0));
+	}
 
 }

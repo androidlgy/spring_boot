@@ -55,9 +55,7 @@ public class TvSeriseDto {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		//return super.toString();
-		return this.getClass().getName() + "{id =" + id + ";name = " + name +"}";
+		return "TvSeriseDto [id=" + id + ", name=" + name + ", oringe=" + oringe + ", dtoList=" + dtoList + "]";
 	}
 
 }

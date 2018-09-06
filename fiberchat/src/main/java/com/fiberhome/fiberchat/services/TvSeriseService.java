@@ -14,5 +14,8 @@ public class TvSeriseService {
 	public List<TvSeriseDto> getAll() {
 		return dao.getAll();
 	}
+	public void update(TvSeriseDto dto) {
+		dao.updateOne(dto);
+	}
  
 }
