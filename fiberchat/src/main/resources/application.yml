@@ -1,0 +1,32 @@
+spring:
+ datasource:
+  type: com.alibaba.druid.pool.DruidDataSource
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://   /andylin
+  username: u2000server
+  password: u2000server
+  druid:
+      #初始化连接大小
+      initial-size: 8
+      #最小空闲连接数
+      min-idle: 5
+      #最大连接数
+      max-active: 10
+      #查询超时时间
+      query-timeout: 6000
+      #事务查询超时时间
+      transaction-query-timeout: 6000
+      #关闭空闲连接超时时间
+      remove-abandoned-timeout: 1800
+      filters: stat,config
+ jackson:
+    date-format: yyyy-MM-dd 
+    timezone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+mybatis.configuration.map-underscore-to-camel-case: true
+loging:
+ file: target/app.log
+ level:
+  ROOT: WARN
+  com.fiberhome: TRACE
